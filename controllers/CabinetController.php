@@ -14,6 +14,7 @@ use app\models\cabinet\CreateForm;
 use yii\helpers\ArrayHelper;
 use app\models\cabinet\Priorities;
 use app\models\cabinet\UploadForm;
+use yii\helpers\Url;
 
 class CabinetController extends Controller
 {
@@ -158,9 +159,17 @@ class CabinetController extends Controller
   
                          
             if($model->create($authUserID) && $model->validate()){
-                  // echo '<pre>'; print_r($data);
-                    return $this->goBack();
+                  return $this->goHome();
+
+           
                 }
+                
+                
+                
+                
+                
+                
+                
             }
             
             

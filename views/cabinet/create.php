@@ -99,9 +99,6 @@ $this->title = 'Новая задача';
     </div>
     
     
-    
-
-
 
 	<div class="form-group">
 		<div class="col-lg-offset-1 col-lg-11">
@@ -110,12 +107,11 @@ $this->title = 'Новая задача';
   
 	</div>
     
-        
-        
-        
-        
-        
-    
 
 <?php ActiveForm::end(); ?>
    </div>
+
+
+
+
+
