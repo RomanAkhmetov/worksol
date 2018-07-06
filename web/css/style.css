@@ -346,7 +346,7 @@ a .red:hover, a .green:hover, a .blue:hover
 }
 .task-priority-grey
 {
-	border-left: 2px solid rgba(255,255,255,0) !important;
+	border-left: 2px solid #708090 !important;
 }
 .task-desc
 {
@@ -378,7 +378,7 @@ a .red:hover, a .green:hover, a .blue:hover
 	border-radius: 4px;
 	-webkit-box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.25);
 	-moz-box-shadow:    0px 3px 4px 0px rgba(50, 50, 50, 0.25);
-	box-shadow:
+
 }
 .taskDetails input[type="text"], select, textarea, input[type="date"]
 {

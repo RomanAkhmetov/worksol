@@ -2,7 +2,6 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 ?>
-
 <div class="row">
 	<div class="nine columns">
 		<h1>Задачи</h1>
@@ -65,17 +64,26 @@ use yii\helpers\Html;
 			
 			<tbody>
 				<?php foreach ($taskList as $task): ?>
-				<tr class="">
-					<td class="task-priority task-priority-red"><span><a href="#"><?=  $task->id?></a></span>
-					<td class="task-desc"><span><a href="#"><?=  $task->task_title?></a></span>
+                            
+                           <?php    $class=function($priority){
+                               $classes=[   
+                               '1'=>'task-priority task-priority-grey',
+                               '2'=>'task-priority task-priority-blue',
+                               '3'=>'task-priority task-priority-green',
+                               '4'=>'task-priority task-priority-red' 
+                           ];return $classes["$priority"];}?>
+				<tr class="">	
+                                        <?= Html::tag('td', Html::encode($task->id), ['class' => $class($task->priority)]) ?>
+					<td class="task-desc"><span><a href="/cabinet/show?id=<?=$task->id?>"><?=  $task->task_title?></a></span>
 					<td><span><?=  $task->project_id?></span>
-					<td><span><a href="#"><?=  $task->manager_teamuser_id?></a></span>
-					<td><span><a href="#"><?=  $task->worker_teamuser_id?></a></span>
-					<td><div class="task-status"><span><a href="#">В работе</a></span></div>
+					<td><span><a href="#"><?= $task->manager_teamuser_id?></a></span>
+					<td><span><a href="#"><?= $task->worker_teamuser_id?></a></span>
+					<td><div class="task-status"><span><a href="#"><?=$task->task_status?></a></span></div>
 				<?php endforeach ?>	
 			</tbody>
 					
 		</table>
-				
-	</div>			
+		
+	</div>	
+ 
 </div>

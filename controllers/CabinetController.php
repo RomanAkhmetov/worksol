@@ -163,22 +163,33 @@ class CabinetController extends Controller
 
            
                 }
-                
-                
-                
-                
-                
-                
-                
+
             }
             
-            
-            
-            
-            
+
             return $this->render('create',$params);//Открываем форму добавления
         
     }
+    
+    
+    public function actionShow(){
+        $task=new Tasks();
+        if(Yii::$app->request->get('id')){
+            $id=Yii::$app->request->get('id');
+        }      
+        
+        
+        
+        $params=[
+             'task'=>$task->getTaskInfo($id) 
+        ];
+        return $this->render('show',$params);//Открываем форму task-detail-info
+    }
+    
+    
+    //Возвращает задачу по id
+   
+    
     
     
     
