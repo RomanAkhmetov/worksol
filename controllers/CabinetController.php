@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
 use app\models\cabinet\Priorities;
 use app\models\cabinet\UploadForm;
 use yii\helpers\Url;
+use yii\web\UploadedFile;
 
 class CabinetController extends Controller
 {
@@ -155,22 +156,22 @@ class CabinetController extends Controller
                 $model->priority=$data['CreateForm']['priority'];
                 $model->category=$data['CreateForm']['category'];
                 $model->deadline=$data['CreateForm']['deadline'];
+                $file[]=UploadedFile::getInstance($uploadModel, 'fileToUpload');
+                
+                
+                echo '<pre>';print_r($file);
 
-  
-                         
+                        
+               
+                
             if($model->create($authUserID) && $model->validate()){
+                   $uploadModel->upload($file);
                   return $this->goHome();
-
-           
+                   //echo '<pre>';print_r();
                 }
-
             }
-            
-
             return $this->render('create',$params);//Открываем форму добавления
-        
     }
-    
     
     public function actionShow(){
         $task=new Tasks();
@@ -189,12 +190,7 @@ class CabinetController extends Controller
     
     //Возвращает задачу по id
    
-    
-    
-    
-    
-    
-    
+
 }
 
 

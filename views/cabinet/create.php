@@ -2,8 +2,11 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
-use kartik\date\DatePicker;
-use yii\web\UploadedFile;
+use dosamigos\datetimepicker\DateTimePicker;
+use nex\datepicker\DatePicker;
+use kartik\file\FileInput;
+
+
 
 $this->title = 'Новая задача';
 ?>
@@ -20,7 +23,10 @@ $this->title = 'Новая задача';
                     'enctype' => 'multipart/form-data','tag'=>'span'
 		]
 ]
-]); ?>
+]); 
+
+
+?>
 
 
     <div class='container'>
@@ -67,17 +73,22 @@ $this->title = 'Новая задача';
 
 
              <div class="form-group">
-
-        <?= $form->field($model, 'deadline')->widget(DatePicker::classname(),[
-            'model' => $model,
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+2 days')),
-            'options' => ['placeholder' => 'Введите дату дедлайна'],
-            'pluginOptions' => [
-                    'format' => 'yyyy-M-d',
-                    'todayHighlight' => true
+<?= $form->field($model, 'deadline')->widget(
+    'trntv\yii\datetime\DateTimeWidget',
+    [
+        'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ',
+        'clientOptions' => [
+            'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
+            'allowInputToggle' => false,
+            'sideBySide' => true,
+            'locale' => 'zh-cn',
+            'widgetPositioning' => [
+               'horizontal' => 'auto',
+               'vertical' => 'auto'
             ]
-        ])?>
+        ]
+    ]
+) ?>
 
             </div>
         
@@ -85,10 +96,20 @@ $this->title = 'Новая задача';
 
 
         <div class="form-group">
-              <?=
-                  $form->field($uploadModel,'file')->fileInput();         
-               ?>
+              <?=$form->field($uploadModel, 'fileToUpload')->fileInput(['multiple' => true, 'accept' => 'doc/*'])?>
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
 
 
             <div class="form-group">
@@ -104,7 +125,7 @@ $this->title = 'Новая задача';
    </div>
     
     
-
+    
 
 
 

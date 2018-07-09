@@ -17,7 +17,7 @@ class CreateForm extends Model{
     public $creating_time;
     public $updating_time;
     public $deadline;
-   
+    public $file;
     
     
     public function rules(){
@@ -45,6 +45,10 @@ class CreateForm extends Model{
         $task->updating_time=date("Y-m-d H:i:s");   
         $task->deadline_time=$this->deadline;
         $task->task_status='Новая';
+        
+        
+
+                
         return $task->save(true);
     }
     
